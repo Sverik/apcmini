@@ -1,21 +1,19 @@
-#N canvas 688 297 490 491 12;
+#N canvas 300 374 490 491 12;
 #X declare -path lib -path ardour-clip-launcher;
 #X obj 20 390 udpsend;
-#X obj 20 419 tgl 15 0 connected empty connected 17 7 0 10 #fcfcfc
-#000000 #000000 0 1;
+#X obj 20 419 tgl 15 0 connected empty connected 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 20 173 packOSC;
 #N canvas 1040 369 450 394 connect 0;
 #X msg 40 260 disconnect;
 #X obj 40 110 unpack s f;
-#X symbolatom 40 170 16 0 0 0 - - -, f 16;
-#X floatatom 170 169 5 0 0 0 - - -, f 5;
+#X symbolatom 40 170 16 0 0 0 - - - 0;
+#X floatatom 170 169 5 0 0 0 - - - 0;
 #X msg 40 230 connect \$1 \$2;
 #X obj 40 197 pack s f;
 #X obj 100 80 t b b;
 #X obj 40 10 inlet;
 #X obj 40 330 outlet;
-#X obj 190 150 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 190 150 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 0 1;
 #X msg 262 116 set 1;
 #X obj 230 170 sel 1 0;
 #X obj 40 80 t a b b;
@@ -40,33 +38,25 @@
 #X connect 13 0 9 0;
 #X coords 0 -1 1 1 175 47 1 37 147;
 #X restore 20 330 pd connect;
-#X obj 19 225 tgl 15 1 empty empty browse 17 7 0 10 #fcfcfc #000000
-#000000 1 1;
+#X obj 19 225 tgl 15 1 empty empty browse 17 7 0 10 #fcfcfc #000000 #000000 1 1;
 #X obj 20 250 oscbrowser;
 #X obj 180 113 unpackOSC;
-#X obj 200 150 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X obj 200 150 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
 #X obj 180 80 udpreceive 8000;
-#X obj 261 150 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X obj 261 150 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
 #X text 281 150 init banks;
-#X obj 220 220 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X obj 220 220 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
 #X msg 220 244 0;
 #X obj 261 220 spigot;
 #X obj 261 249 print osc;
-#X obj 321 190 tgl 15 1 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
-#X obj 240 290 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
+#X obj 321 190 tgl 15 1 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000 1 1;
+#X obj 240 290 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
 #X obj 260 310 midi-input;
 #X obj 240 410 midi-output;
 #X obj 240 379 t a a;
 #X obj 240 350 apcmini;
-#X obj 20 40 tgl 25 0 empty play play 29 7 0 10 #028725 #000000 #000000
-0 1;
-#X obj 101 40 bng 25 250 50 0 empty sync sync 30 8 0 10 #de05fa #000000
-#000000;
+#X obj 20 40 tgl 25 0 empty play play 29 7 0 10 #028725 #000000 #000000 0 1;
+#X obj 101 40 bng 25 250 50 0 empty sync sync 30 8 0 10 #de05fa #000000 #000000;
 #N canvas 612 393 427 262 transport 0;
 #X msg 180 150 /set_surface/feedback 32768;
 #X msg 20 140 /transport_stop 1;
@@ -80,8 +70,7 @@
 #X obj 240 117 s sync;
 #X obj 20 210 s oscout;
 #X text 90 70 play/stop;
-#X text 180 180 ask Ardour to update the grid and bank status, f 27
-;
+#X text 180 180 ask Ardour to update the grid and bank status, f 27;
 #X connect 0 0 10 0;
 #X connect 1 0 10 0;
 #X connect 2 0 10 0;
@@ -104,10 +93,7 @@
 #X obj 180 122 change;
 #X msg 180 180 assign 0 \, banks 0 0 0 0;
 #X obj 180 151 sel 0 1;
-#X text 20 10 At startup \, try to detect the apcmini model. Also \,
-when connecting to Ardour \, assign the faders to volume. When the
-connection to Ardour is lost \, clear the assign and bank buttons.
-;
+#X text 20 10 At startup \, try to detect the apcmini model. Also \, when connecting to Ardour \, assign the faders to volume. When the connection to Ardour is lost \, clear the assign and bank buttons.;
 #X connect 0 0 3 0;
 #X connect 1 0 2 0;
 #X connect 2 0 0 0;
@@ -123,13 +109,12 @@ connection to Ardour is lost \, clear the assign and bank buttons.
 #X obj 40 79 routeOSC /trigger_grid;
 #X obj 40 108 routeOSC /bank;
 #X obj 40 137 unpack f f f f;
-#X floatatom 40 166 5 0 0 0 - - -, f 5;
-#X floatatom 82 166 5 0 0 0 - - -, f 5;
-#X floatatom 124 166 5 0 0 0 - - -, f 5;
-#X floatatom 166 166 5 0 0 0 - - -, f 5;
+#X floatatom 40 166 5 0 0 0 - - - 0;
+#X floatatom 82 166 5 0 0 0 - - - 0;
+#X floatatom 124 166 5 0 0 0 - - - 0;
+#X floatatom 166 166 5 0 0 0 - - - 0;
 #X text 40 190 #cols coloffs #rows rowoffs;
-#X obj 40 380 routeOSC /0/state /1/state /2/state /3/state /4/state
-/5/state /6/state /7/state;
+#X obj 40 380 routeOSC /0/state /1/state /2/state /3/state /4/state /5/state /6/state /7/state;
 #X obj 408 580 outlet;
 #X obj 40 440 state 0;
 #X obj 86 465 state 1;
@@ -141,18 +126,15 @@ connection to Ardour is lost \, clear the assign and bank buttons.
 #X obj 362 465 state 7;
 #X obj 290 300 inlet;
 #X obj 290 329 t b b b b b b b b;
-#X obj 280 21 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000;
+#X obj 280 21 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000;
 #X obj 280 45 t b b;
 #X obj 280 101 del 3000;
 #X msg 312 71 stop;
 #X obj 280 130 outlet;
-#X text 360 51 these messages come regularly \, so we can use them
-to check whether our connection to Ardour is still alive, f 26;
+#X text 360 51 these messages come regularly \, so we can use them to check whether our connection to Ardour is still alive, f 26;
 #X text 340 300 2nd inlet: initialize the state of all pads;
 #X obj 200 300 loadbang;
-#X text 280 530 everything else gets passed through unchanged for testing
-purposes;
+#X text 280 530 everything else gets passed through unchanged for testing purposes;
 #X obj 40 49 t a b;
 #X text 440 380 pad state feedback per track / column;
 #X text 240 180 feedback for bank switching;
@@ -233,12 +215,12 @@ purposes;
 #X obj 40 470 s oscout;
 #X obj 80 311 t f f;
 #X obj 80 340 mod 8;
-#X floatatom 80 369 5 0 0 0 - - -, f 5;
-#X floatatom 140 369 5 0 0 0 - - -, f 5;
+#X floatatom 80 369 5 0 0 0 - - - 0;
+#X floatatom 140 369 5 0 0 0 - - - 0;
 #X obj 140 340 expr 7 - int($f1 / 8);
 #X obj 80 397 pack f f;
 #X msg 80 430 /trigger_bang \$1 \$2;
-#X floatatom 40 160 5 0 0 0 - - -, f 5;
+#X floatatom 40 160 5 0 0 0 - - - 0;
 #X obj 40 30 inlet;
 #X msg 40 230 /trigger_stop \$1 0;
 #X obj 300 320 unpack f f;
@@ -250,21 +232,15 @@ purposes;
 #X obj 440 378 pack f f;
 #X obj 368 349 / 127;
 #X obj 508 349 / 127;
-#X obj 40 80 route scene pad vol pan bank-up bank-down bank-left bank-right
-stop stop-all solo mute, f 87;
+#X obj 40 80 route scene pad vol pan bank-up bank-down bank-left bank-right stop stop-all solo mute, f 87;
 #X obj 470 230 switches solo;
 #X obj 470 259 outlet;
 #X obj 530 200 switches mute;
-#X text 460 120 These needed special treatment \, since apcmini doesn't
-manage these states \, and apparently Ardour doesn't send any feedback
-either \, so we maintain the state of those switches here and also
-provide feedback for the apcmini object.;
+#X text 460 120 These needed special treatment \, since apcmini doesn't manage these states \, and apparently Ardour doesn't send any feedback either \, so we maintain the state of those switches here and also provide feedback for the apcmini object.;
 #X obj 40 109 stripnote;
 #X obj 80 139 stripnote;
 #X obj 600 280 route note1 note10;
-#X text 600 310 Note pass-through from the note and drum modes. In
-the future \, we might want to do something sensible here \, along
-the lines of what the koala-sampler app does., f 41;
+#X text 600 310 Note pass-through from the note and drum modes. In the future \, we might want to do something sensible here \, along the lines of what the koala-sampler app does., f 41;
 #X connect 0 0 1 0;
 #X connect 0 1 2 0;
 #X connect 1 0 3 0;
@@ -321,6 +297,8 @@ the lines of what the koala-sampler app does., f 41;
 #X connect 41 0 16 0;
 #X restore 330 410 pd osc-output;
 #X obj 20 450 declare -path lib -path ardour-clip-launcher;
+#X msg 317 58 connect 127.0.0.1 3819;
+#X obj 407 175 print SPY;
 #X connect 0 0 1 0;
 #X connect 2 0 0 0;
 #X connect 3 0 0 0;
@@ -328,6 +306,7 @@ the lines of what the koala-sampler app does., f 41;
 #X connect 5 0 3 0;
 #X connect 6 0 7 0;
 #X connect 6 0 26 0;
+#X connect 6 0 30 0;
 #X connect 8 0 6 0;
 #X connect 9 0 26 1;
 #X connect 11 0 12 0;
@@ -347,3 +326,4 @@ the lines of what the koala-sampler app does., f 41;
 #X connect 26 1 11 0;
 #X connect 26 2 13 0;
 #X connect 27 0 20 0;
+#X connect 29 0 0 0;

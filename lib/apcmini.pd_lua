@@ -555,7 +555,8 @@ function apcmini:in_1_note(args)
 	 if n == 98 then
 	    -- SHIFT button
 	    self.shift = v>0 and 1 or 0
-	 elseif n >= 82 and self.shift == 0 then
+
+	    elseif n >= 82 and (self.shift == nil or self.shift == 0) then
 	    -- scene button
 	    self:outlet(1, "scene", {n-82, v})
 	 elseif v > 0 then
