@@ -1,4 +1,4 @@
-#N canvas 300 374 490 491 12;
+#N canvas 300 416 490 491 12;
 #X declare -path lib -path ardour-clip-launcher;
 #X obj 20 390 udpsend;
 #X obj 20 419 tgl 15 0 connected empty connected 17 7 0 10 #fcfcfc #000000 #000000 0 1;
@@ -173,14 +173,6 @@
 #X connect 17 0 36 0;
 #X connect 18 0 36 0;
 #X connect 19 0 20 0;
-#X connect 20 0 11 1;
-#X connect 20 1 12 1;
-#X connect 20 2 13 1;
-#X connect 20 3 14 1;
-#X connect 20 4 15 1;
-#X connect 20 5 16 1;
-#X connect 20 6 17 1;
-#X connect 20 7 18 1;
 #X connect 21 0 22 0;
 #X connect 22 0 23 0;
 #X connect 22 1 24 0;
